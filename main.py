@@ -12,10 +12,10 @@ import numpy as np
 X_train_multiclass, X_test_multiclass, y_train_multiclass, y_test_multiclass = generate_multiclass_data()
 
 # Model Initialization
-nw_multi_classifier = NadarayaWatsonRidgeClassifer(alpha=1.0, h=2.0, batch_size=200)
+nw_multi_classifier = NadarayaWatsonRidgeClassifier(alpha=1.0, h=2.0, batch_size=200)
 svc_classifier = SVC(probability=True)
 
-# Training and Timing NadarayaWatsonRidgeClassifer
+# Training and Timing NadarayaWatsonRidgeClassifier
 start_time_nw = time.time()
 nw_multi_classifier.fit(X_train_multiclass, y_train_multiclass)
 end_time_nw = time.time()
