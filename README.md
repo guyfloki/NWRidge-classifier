@@ -42,7 +42,7 @@ To get started with the Nadaraya-Watson Ridge Classifier library, follow these s
 1. Clone this repository:
 
     ```bash
-    !git clone https://github.com/guyfloki/Nadaraya-Watson-Ridge-Classifier.git
+    git clone https://github.com/guyfloki/Nadaraya-Watson-Ridge-Classifier.git
     cd Nadaraya-Watson-Ridge-Classifier
     ```
 
