@@ -49,7 +49,7 @@ class AdamWOptimizer:
         return params
 
 class NadarayaWatsonRidgeClassifier:
-    """Nadaraya-Watson Ridge Classifer.
+    """Nadaraya-Watson Ridge Classifier.
 
     This classifier combines the Nadaraya-Watson kernel regression technique
     with a ridge regularization for multi-class classification.
@@ -208,7 +208,7 @@ class NadarayaWatsonRidgeClassifier:
         Returns:
             np.ndarray: Softmax cross entropy loss.
         """
-        probabilities = NadarayaWatsonRidgeClassifer.softmax(logits)
+        probabilities = NadarayaWatsonRidgeClassifier.softmax(logits)
         return -np.sum(y_true * np.log(probabilities + 1e-10), axis=-1)
 
     def predict(self, X: np.ndarray) -> np.ndarray:
