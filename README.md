@@ -42,7 +42,7 @@ To get started with the Nadaraya-Watson Ridge Classifier library, follow these s
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/yourusername/Nadaraya-Watson-Ridge-Classifier.git
+    !git clone https://github.com/guyfloki/Nadaraya-Watson-Ridge-Classifier.git
     cd Nadaraya-Watson-Ridge-Classifier
     ```
 
@@ -59,12 +59,12 @@ To get started with the Nadaraya-Watson Ridge Classifier library, follow these s
 Here's how you can quickly get started:
 
 ```python
-from nw_ridge_classifier import NadarayaWatsonRidgeClassifier
+from models.nadaraya_watson_ridge_classifier import NadarayaWatsonRidgeClassifier
 import numpy as np
 
 # Create training and test datasets
 X_train = np.random.rand(100, 2)
-y_train = np.array([0, 1, 2]).repeat(33)[:100]
+y_train = np.concatenate([np.array([0, 1, 2]).repeat(33), np.array([0])])
 X_test = np.random.rand(10, 2)
 
 # Initialize and fit the model
