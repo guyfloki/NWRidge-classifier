@@ -1,5 +1,5 @@
 from models.nadaraya_watson_ridge_classifier import AdamWOptimizer
-from models.nadaraya_watson_ridge_classifier import NadarayaWatsonRidgeClassifer
+from models.nadaraya_watson_ridge_classifier import NadarayaWatsonRidgeClassifier
 from utils.data_generation import generate_multiclass_data
 from utils.model_comparison import compare_models
 from sklearn.svm import SVC
