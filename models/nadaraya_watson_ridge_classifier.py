@@ -48,7 +48,7 @@ class AdamWOptimizer:
             params -= self.lr * (m_hat / (np.sqrt(v_hat) + self.epsilon) + self.weight_decay * params)
         return params
 
-class NadarayaWatsonRidgeClassifer:
+class NadarayaWatsonRidgeClassifier:
     """Nadaraya-Watson Ridge Classifer.
 
     This classifier combines the Nadaraya-Watson kernel regression technique
