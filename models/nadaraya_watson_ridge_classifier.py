@@ -89,6 +89,10 @@ class NadarayaWatsonRidgeClassifier:
         K = -0.5 * np.sum(squared_diff, axis=-1)
         return np.exp(K / h ** 2)
 
+    def _convert_to_numpy(self, array_like):
+        """Utility method to convert input to NumPy array."""
+        return np.array(array_like)
+
     def fit(self, X: Union[np.ndarray, csr_matrix], y: np.ndarray) -> None:
         """Train the model.
 
@@ -99,6 +103,8 @@ class NadarayaWatsonRidgeClassifier:
         Returns:
             None
         """
+        X = self._convert_to_numpy(X)
+        y = self._convert_to_numpy(y)
         self._clear_kernel_cache()
         if issparse(X):
             X = csr_matrix(X)
@@ -146,6 +152,10 @@ class NadarayaWatsonRidgeClassifier:
         Returns:
             np.ndarray: Nadaraya-Watson estimates for query points.
         """
+        X = self._convert_to_numpy(X)
+        residuals = self._convert_to_numpy(residuals)
+        X_query = self._convert_to_numpy(X_query)
+
         n_batches = (X.shape[0] + self.batch_size - 1) // self.batch_size  
         kernel_corrections = np.zeros((X_query.shape[0], self.n_classes))
 
@@ -176,6 +186,9 @@ class NadarayaWatsonRidgeClassifier:
         Returns:
             np.ndarray: Computed kernel values for the chunk.
         """
+        X_chunk = self._convert_to_numpy(X_chunk)
+        X_query = self._convert_to_numpy(X_query)
+        
         key = (tuple(X_chunk.flatten()), tuple(X_query.flatten()))
         if key in self.kernel_cache:
             return self.kernel_cache[key]
@@ -220,6 +233,7 @@ class NadarayaWatsonRidgeClassifier:
         Returns:
             np.ndarray: Predicted class labels.
         """
+        X = self._convert_to_numpy(X)
         linear_preds = X.dot(self.w) + self.b
         kernel_corrections = self._nadaraya_watson(self.X_train, self.y_train - self.X_train.dot(self.w), X)
         corrected_logits = linear_preds + kernel_corrections
